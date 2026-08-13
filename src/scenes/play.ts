@@ -17,7 +17,7 @@ export class Play extends Scene {
   private match!: MatchState;
   private fixture!: Fixture;
   private paused = false;
-  private speed: 1 | 2 | 4 = 2;
+  private speed: number = 0.02;
   private reported = false;
 
   override async setup(data?: unknown): Promise<void> {

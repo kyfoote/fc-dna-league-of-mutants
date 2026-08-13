@@ -271,6 +271,7 @@ function chooseAction(state: MatchState, mp: MatchPlayer, _dt: number): void {
 
   const shootRange = 190 + mp.player.stats.shooting * 1.1;
   const wantsShot = distToGoal < shootRange && chance(state.rng, 0.028 * mp.pmods.shotChance * (mp.slot.group === 'FW' ? 1.3 : mp.slot.group === 'MF' ? 0.5 : 0.12));
+  console.log(`Player ${mp.player.firstName} ${mp.player.lastName} wants shot: ${wantsShot}`);
   if (wantsShot && mp.slot.group !== 'GK') {
     shoot(state, mp, goalPos);
     return;
@@ -474,7 +475,7 @@ function substep(state: MatchState, dt: number): void {
   const owner = ownerOf(state);
   if (owner) {
     state.stats.possessionSec[owner.side] += dt;
-    owner.decisionCooldown -= dt;
+    owner.decisionCooldown -= dt * 20;
     if (owner.decisionCooldown <= 0) {
       owner.decisionCooldown = randFloat(state.rng, 0.7, 1.6);
       chooseAction(state, owner, dt);
