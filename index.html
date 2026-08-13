@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Game</title>
+<!-- The engine creates its own <canvas> inside <div id="game"> (the mount
+     point named by CONTAINER in src/config.ts) and re-fits its backing store
+     (× devicePixelRatio, capped) and world aspect every frame. -->
+<style>
+  html, body {
+    width: 100vw; height: 100vh; height: -webkit-fill-available;
+    margin: 0; padding: 0;
+  }
+  body {
+    background: #0b0e1a;
+    overflow: hidden;
+  }
+  #game {
+    width: 100%; height: 100%; overflow: hidden;
+  }
+</style>
+</head>
+<body>
+  <div id="game"></div>
+  <script type="module" src="dist/main.js"></script>
+</body>
+</html>
